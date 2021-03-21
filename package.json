@@ -1,7 +1,7 @@
 {
   "name": "vue-boilerplate",
   "version": "0.1.0",
-  "license": "GNU",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
