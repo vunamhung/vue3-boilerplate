@@ -50,20 +50,11 @@ module.exports = {
           '.col-span-full': {
             'grid-column': '1 / -1',
           },
-          '.grid-cols-2a': {
-            'grid-template-columns': 'repeat(2, auto)',
-          },
           '.flex-2': {
             flex: '2 1 0',
           },
           '.flex-3': {
             flex: '3 1 0',
-          },
-          '.border-core': {
-            'border-color': 'var(--color-core)',
-          },
-          '.bg-core': {
-            'background-color': 'var(--color-core)',
           },
         },
         ['responsive'],
