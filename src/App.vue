@@ -1,5 +1,5 @@
 <template>
-  <img class="inline-block" alt="Vue logo" src="./assets/logo.png" />
+  <img class="inline-block" alt="Vue logo" src="./assets/images/logo.png" />
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
 
@@ -10,13 +10,8 @@ import HelloWorld from './components/HelloWorld.vue';
 // Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
 </script>
 
-<style>
+<style lang="postcss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  @apply text-center;
 }
 </style>

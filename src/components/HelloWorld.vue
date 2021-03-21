@@ -1,7 +1,7 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <h1 class="my-8">{{ msg }}</h1>
 
-  <p class="py-12 bg-[#f5f5f5]">
+  <p class="py-12 bg-[#f5f5f5] mb-8">
     <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite Documentation</a> |
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
   </p>
