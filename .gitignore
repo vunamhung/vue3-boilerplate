@@ -21,7 +21,6 @@ public/sw.js
 
 # misc
 .DS_Store
-.idea
 
 # debug
 npm-debug.log*
