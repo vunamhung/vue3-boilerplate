@@ -5,7 +5,17 @@ import vue from '@vitejs/plugin-vue';
 import vueSvgPlugin from 'vite-plugin-vue-svg';
 
 export default defineConfig({
-  plugins: [vue(), VitePWA(), vueSvgPlugin()],
+  plugins: [
+    vue(),
+    vueSvgPlugin(),
+    VitePWA({
+      workbox: {
+        cleanupOutdatedCaches: true,
+        skipWaiting: true,
+        clientsClaim: true,
+      },
+    }),
+  ],
   resolve: {
     alias: [
       {
