@@ -1,7 +1,7 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-  purge: ['./src/**/*.vue', './public/**/*.html'],
+  purge: ['./index.html', './src/**/*.vue'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -67,6 +67,8 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio'),
     plugin(({ addVariant, e, addUtilities, theme, prefix, variants }) => {
       const escape = e || ((x) => x);
 
