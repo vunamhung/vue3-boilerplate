@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "clean": "rm -rf node_modules/bootstrap/dist"
   },
   "dependencies": {
     "@vuelidate/core": "^2.0.0-alpha.14",
