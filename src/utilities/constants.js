@@ -1,1 +1,1 @@
-export const API_URL = process.env.VUE_APP_URL_SERVER;
+export const API_URL = import.meta.env.VITE_API_URL;

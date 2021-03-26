@@ -1,31 +1,32 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import { VitePWA } from 'vite-plugin-pwa';
+import { VitePWA as pwa } from 'vite-plugin-pwa';
 import vue from '@vitejs/plugin-vue';
-import vueSvgPlugin from 'vite-plugin-vue-svg';
+import svg from 'vite-plugin-vue-svg';
+import pluginImport from 'vite-plugin-importer';
+import radar from 'vite-plugin-radar';
 
 export default defineConfig({
   plugins: [
     vue(),
-    vueSvgPlugin(),
-    VitePWA({
-      workbox: {
-        cleanupOutdatedCaches: true,
-        skipWaiting: true,
-        clientsClaim: true,
-      },
+    svg(),
+    pwa({ workbox: { cleanupOutdatedCaches: true, skipWaiting: true, clientsClaim: true } }),
+    pluginImport({
+      libraryName: 'element-plus',
+      libraryDirectory: 'es',
+      // customStyleName: (name) => resolve(__dirname, `./src/assets/theme-chalk/${name.replace('el-', '')}.css`),
+    }),
+    radar({
+      analytics: { id: 'G-XXXXX' },
+      gtm: [{ id: 'GTM-XXXXX' }],
+      pixel: [{ id: 'XXXXXXX' }],
     }),
   ],
   resolve: {
     alias: [
-      {
-        find: '@',
-        replacement: resolve(__dirname, './src'),
-      },
-      {
-        find: 'vue',
-        replacement: 'vue/dist/vue.esm-bundler.js',
-      },
+      { find: '@', replacement: resolve(__dirname, 'src') },
+      { find: '~', replacement: resolve(__dirname, 'node_modules') },
+      { find: 'vue', replacement: 'vue/dist/vue.esm-bundler.js' },
     ],
   },
 });
