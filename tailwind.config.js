@@ -1,4 +1,4 @@
-const plugin = require('tailwindcss/plugin');
+const { spacing } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   purge: ['./index.html', './src/**/*.vue'],
@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       container: {
         center: true,
-        padding: '2rem',
+        padding: spacing[6],
         screens: {
           sm: '100%',
           md: '640px',
@@ -18,6 +18,10 @@ module.exports = {
       screens: {
         dlg: { max: '1023px' },
         dmd: { max: '767px' },
+      },
+      flex: {
+        2: '2 1 0%',
+        3: '3 1 0%',
       },
       maxWidth: {
         'min-content': 'min-content',
@@ -65,67 +69,21 @@ module.exports = {
       },
     },
   },
+  variants: {
+    extend: {
+      display: ['group-hover'],
+      backgroundColor: ['odd', 'before', 'after'],
+      borderRadius: ['before', 'after'],
+      inset: ['before', 'after'],
+      position: ['before', 'after'],
+      zIndex: ['before', 'after'],
+      backgroundOpacity: ['before', 'after'],
+    },
+  },
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/aspect-ratio'),
-    plugin(({ addVariant, e, addUtilities, theme, prefix, variants }) => {
-      const escape = e || ((x) => x);
-
-      ['after', 'backdrop ', 'before', 'cue', 'first-letter', 'first-line', 'grammar-error ', 'marker ', 'placeholder ', 'selection'].forEach(
-        (pseudo) => {
-          addVariant(pseudo, ({ modifySelectors, separator }) => {
-            modifySelectors(({ className }) => {
-              return `.${escape(`${pseudo}${separator}${className}`)}::${pseudo}`;
-            });
-          });
-        },
-      );
-
-      addVariant('important', ({ container }) => {
-        container.walkRules((rule) => {
-          rule.selector = `.\\!${rule.selector.slice(1)}`;
-          rule.walkDecls((decl) => {
-            decl.important = true;
-          });
-        });
-      });
-
-      addUtilities(
-        {
-          '.col-span-full': {
-            'grid-column': '1 / -1',
-          },
-          '.flex-2': {
-            flex: '2 1 0',
-          },
-          '.flex-3': {
-            flex: '3 1 0',
-          },
-        },
-        ['responsive'],
-      );
-
-      addUtilities(
-        {
-          '.hide': {
-            display: 'none',
-          },
-          '.show': {
-            display: 'block',
-          },
-        },
-        ['responsive', 'important'],
-      );
-
-      addUtilities(
-        {
-          '.empty-content': {
-            content: "''",
-          },
-        },
-        ['before'],
-      );
-    }),
+    require('tailwindcss-pseudo-selectors'),
   ],
 };
