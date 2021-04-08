@@ -1,6 +1,7 @@
 const { spacing } = require('tailwindcss/defaultTheme');
 
 module.exports = {
+  mode: process.env.NODE_ENV ? 'jit' : undefined, // This "hack" ensures your IDE detects all normal.
   purge: ['./index.html', './src/**/*.vue'],
   darkMode: false, // or 'media' or 'class'
   theme: {

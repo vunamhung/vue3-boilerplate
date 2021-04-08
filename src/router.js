@@ -1,14 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '@/pages/Home.vue';
+import { flatten } from 'ramda';
 
-const routes = [
-  {
-    path: '/',
-    component: Home,
-  },
-];
+const routes = import.meta.globEager('./pages/**/route.js');
 
-const history = createWebHistory();
+const router = createRouter({ history: createWebHistory(), routes: flatten(Object.keys(routes).map((item) => routes[item].default)) });
 
-const router = createRouter({ history, routes });
 export default router;

@@ -1,5 +1,20 @@
 {
-	"printWidth": 145,
+  "printWidth": 145,
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "vueIndentScriptAndStyle": true,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "*.vue",
+      "options": {
+        "parser": "vue"
+      }
+    }
+  ]
 }

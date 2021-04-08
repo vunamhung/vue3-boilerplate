@@ -3,7 +3,6 @@ import { defineConfig } from 'vite';
 import { VitePWA as pwa } from 'vite-plugin-pwa';
 import vue from '@vitejs/plugin-vue';
 import svg from 'vite-plugin-vue-svg';
-import pluginImport from 'vite-plugin-importer';
 import radar from 'vite-plugin-radar';
 
 export default defineConfig({
@@ -11,11 +10,6 @@ export default defineConfig({
     vue(),
     svg(),
     pwa({ workbox: { cleanupOutdatedCaches: true, skipWaiting: true, clientsClaim: true } }),
-    pluginImport({
-      libraryName: 'element-plus',
-      libraryDirectory: 'es',
-      // customStyleName: (name) => resolve(__dirname, `./src/assets/theme-chalk/${name.replace('el-', '')}.css`),
-    }),
     radar({
       analytics: { id: 'G-XXXXX' },
       gtm: [{ id: 'GTM-XXXXX' }],
